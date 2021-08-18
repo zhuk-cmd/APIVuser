@@ -12,9 +12,11 @@ class EmployeeAdmin(admin.ModelAdmin):
     actions = ['fast_delete']
     @admin.action(description='Удалить информацию о выплаченой зп сотрудников')
     def fast_delete(self,request,queryset):
-        #queryset.delete(inform=True)
-        many = Employee.objects.get(id)
-        many.delete()
+        super().delete_model(request,Employee.inform)
+        #Employee.objects.filter(inform=request.POST).delete()
+        #queryset.delete(inform)
+        #Employee.delete()
+        # many.delete()
 
 admin.site.register(Employee, EmployeeAdmin)
 

@@ -11,15 +11,9 @@ class Employee(MPTTModel):
     earnings = models.DecimalField(max_digits=12,decimal_places=4,verbose_name='Заработная плата')
     inform = models.DecimalField(max_digits=12,decimal_places=4,verbose_name='Информация о выплаченной зп')
 
-
     class MPTTMeta:
         order_insertion_by = ['name']
 
-
     def __str__(self):
         return self.name
-
-
-    # def __add__(self, other):
-    #     return self.inform
 

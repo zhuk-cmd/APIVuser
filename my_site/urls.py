@@ -18,14 +18,16 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from app_1.views import APIVall_data
+from app_1.views import APIVall_data, api_user
 router = DefaultRouter()
-router.register('all_data', APIVall_data)
-#router.register('user_data', APIVuser)
+router.register('all_data', APIVall_data,)
+
 
 urlpatterns = [
     path('', include('app_1.urls')),
     path('admin/', admin.site.urls),
-    path('api/',include(router.urls))
+    path('api/',include(router.urls)),
+    path('user_api/<int:pk>', api_user, name='user_api'),
+    path('api_auth/',include('rest_framework.urls'))
 
 ]
